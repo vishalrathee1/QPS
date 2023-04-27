@@ -16,9 +16,11 @@ int main(){
 	vector<vector<int>> ds;
 	for(int i =1; i<=m; i++){
 		vector<int> temp;
-		for(int bit = 1; bit<=n; bit++){
-			if((i-1)&(bit-1)){
-				temp.push_back(arr[bit-1]);
+		for(int bit = 0; bit<n; bit++){
+			//instead of using & with bit , if we do by creating mask then it would work
+			//but it wouldn't work in bit&n 
+			if((i-1)&(1<<bit)){
+				temp.push_back(arr[bit]);
 			}
 		}
 		ds.push_back(temp);

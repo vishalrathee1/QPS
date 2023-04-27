@@ -58,15 +58,17 @@ int main(){
 	cout<<endl;
 	for(int i =0; i<n; i++){
 		int ind = i;
-		while(!st2.empty() && arr[st2.top().first]>=arr[i]){
+		//instead of arr[st2.top().first] it should have been just st2.top().second
+		while(!st2.empty() && st2.top().second>=arr[i]){
 			//pop but before we have to store its contributing area
 			int w = i-st2.top().first;
 			int h = st2.top().second;
-			cout<<h<<w<<endl;
+			//cout<<h<<w<<endl;
 			ans = max(ans, h*w);
 			ind = st2.top().first;
 			st2.pop();
 		}
+		cout<<ind<<" "<<arr[i]<<endl;
 		st2.push({ind, arr[i]});
 	}
 
